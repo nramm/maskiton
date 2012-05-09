@@ -1,0 +1,52 @@
+
+<!doctype html>
+<html lang=en>
+    <head>
+        <title>Upload File</title>
+        <meta charset=utf-8>
+        <link rel='stylesheet' type='text/css' href='css/button.css'>
+        <link rel='stylesheet' type='text/css' href='css/dropdown.css'>
+        <link rel='stylesheet' type='text/css' href='css/progressbar.css'>
+        <link rel='stylesheet' type='text/css' href='css/upload.css'>
+        <script data-main="scripts/stackupload" src="scripts/require.js"></script>
+    </head>
+    <body>
+        <script type="text/html" id="t-upload-entry">
+            <tr class='upload-entry'>
+                <td class="filename smooth-text" data-bind="text: name"></td>
+                <td><button class="ui-text smooth-text" data-bind="style: { backgroundColor: button.color },
+                                                                   click: button.action(),
+                                                                    text: button.text"></button>
+                </td>
+                <td class="upload-progressbar" data-bind="pbar: progress"></td>
+            </tr>
+        </script>
+        <h1 style="padding-left: 2em;">Custom Masking Stack Upload</h1>
+        <div class="uploader">
+            <div class="uploader-header hbox borderbox center">
+                <button class="file-select-button smooth-text">
+                    Upload Stack
+                    <input type="file" data-bind="fileinput: addToUploads" multiple></input>
+                </button>
+                <div class="smooth-text">-OR-</div>
+                <select class="button smooth-text" data-bind="options: public_datasets,
+                                                          optionsText: function(item) { return item.name; },
+                                                                value: selectedDataset">
+                </select>
+                <button class="smooth-text" data-bind="enable: proceed().enabled, click: proceed().action">
+                    Proceed With Selected Stack
+                </button>
+            </div>
+            <div class="dropdown">
+                <table>
+                    <tbody data-bind="template: { name: 't-upload-entry', foreach: uploads }"></tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+

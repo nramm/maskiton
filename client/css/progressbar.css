@@ -1,0 +1,139 @@
+/*
+Copyright (c) 2010-2012 Ivan Vanderbyl
+Originally found at http://ivan.ly/ui
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+
+
+.pbar, .pbar-bar {
+  position : relative;
+  border-radius : 25px;
+  height : 25px;
+  min-width: 25px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing : border-box;
+}
+
+/* Container for the Progress Bar */
+.pbar {
+  /* Background of progress bar holder */
+  background-color: rgb(200,200,200);
+  background: -webkit-linear-gradient(rgb(200,200,200)   0%,
+                                      rgb(150,150,150)  30%,
+                                      rgb(200,200,200) 100%);
+  background: -moz-linear-gradient(rgb(200,200,200)   0%,
+                                   rgb(150,150,150)  30%,
+                                   rgb(200,200,200) 100%);
+  background: linear-gradient(rgb(200,200,200)   0%,
+                              rgb(150,150,150)  30%,
+                              rgb(200,200,200) 100%);
+  /* Give it the inset look by adding some shadows and highlights */
+  box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.7), 0px 1px 0px 0px white;
+}
+
+.pbar .pbar-bar {
+  /* Usual setup stuff */
+  display:  block;
+  overflow: hidden;
+  /* animate all css style transitions */
+  -webkit-transition: width 0.2s ease-in-out,
+                      background-color 0.2s ease-in-out;
+  background-size: 44px 44px;
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4), inset 0px -1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pbar-bar {
+  background-color: rgb(100, 100, 100);
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.00)   0%,
+                                      rgba(255, 255, 255, 0.70)  70%,
+                                      rgba(255, 255, 255, 0.00) 100%);
+}
+
+/* draw the stripes using css gradients */
+.pbar.stripes .pbar-bar {
+    background: -webkit-repeating-linear-gradient( -45.4deg, rgba(255, 255, 255, 0.25)  0px,
+                                                             rgba(255, 255, 255, 0.25) 15px,
+                                                             rgba(255, 255, 255, 0)    15px,
+                                                             rgba(255, 255, 255, 0)    30px),
+                -webkit-linear-gradient(rgba(255, 255, 255, 0.00)   0%,
+                                        rgba(255, 255, 255, 0.70)  70%,
+                                        rgba(255, 255, 255, 0.00) 100%);
+    background: -moz-repeating-linear-gradient( -45.4deg, rgba(255, 255, 255, 0.25)  0px,
+                                                          rgba(255, 255, 255, 0.25) 15px,
+                                                          rgba(255, 255, 255, 0)    15px,
+                                                          rgba(255, 255, 255, 0)    30px),
+                -moz-linear-gradient(rgba(255, 255, 255, 0.00)   0%,
+                                     rgba(255, 255, 255, 0.70)  70%,
+                                     rgba(255, 255, 255, 0.00) 100%);
+    -moz-animation:    keyframes 1s linear infinite;
+    -webkit-animation: keyframes 1s linear infinite;
+    animation:         keyframes 1s linear infinite;
+    -moz-animation-play-state    : paused; /* Firefox*/
+    -webkit-animation-play-state : paused; /* Safari and Chrome */
+    animation-play-state         : paused;
+}
+
+/* set the animation frames, the translation is calculated based on the stripe rpeat distance */
+@-webkit-keyframes keyframes {
+  to {
+    background-position: 42.42px 0;
+  }
+  from {
+    background-position: 0px 0;
+  }
+}
+
+@-moz-keyframes keyframes {
+  to {
+    background-position: 42.42px 0;
+  }
+  from {
+    background-position: 0px 0;
+  }
+}
+
+.pbar.stripes.animate .pbar-bar {
+  animation-play-state:running;
+  -moz-animation-play-state:running; /* Firefox*/
+  -webkit-animation-play-state:running; /* Safari and Chrome */
+}
+
+.pbar .pbar-label {
+  /* position just left of progress bar leading edge */
+  position: absolute;
+  left: 0;
+  top:  0;
+  line-height: 23px;
+  padding-left: 12px;
+  white-space: nowrap;
+  /* set text settings */
+  -moz-font-smoothing:    antialiased;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing:         antialiased;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: rgba(255, 255, 255, 0.45) 0 1px 0px;
+  font-weight: bold;
+}
+
+
+

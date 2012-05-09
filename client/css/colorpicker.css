@@ -1,0 +1,65 @@
+/**
+ * Farbtastic Color Picker 1.2
+ * © 2008 Steven Wittens
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+.colorpicker {
+    position: absolute;
+    background-color: white;
+}
+
+.colorpicker .wheel {
+    position: relative;
+    cursor: crosshair;
+}
+
+.colorpicker .overlay {
+    position: absolute;
+}
+
+.colorpicker .marker {
+    position: absolute;
+}
+
+.colorpicker .fitted {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+}
+
+.colorpicker table {
+    width: 100%;
+}
+
+.colorpicker .label {
+    color: rgb(100,100,100);
+    text-align: right;
+}
+
+.colorpicker .value {
+    text-align: center;
+    color: rgb(0,0,0);
+}
+
+.colorpicker .current {
+    border: 2px solid black;
+    width: 20%;
+}
+
+

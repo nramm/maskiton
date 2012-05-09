@@ -1,0 +1,42 @@
+
+button, select {
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 5px;
+  padding : 4px 8px 4px 8px;
+  box-shadow: inset 0px 0px 1px 1px rgba(0,0,0,0.3);
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.50)   0%,
+                                      rgba(255, 255, 255, 0.00)  50%,
+                                      rgba(255, 255, 255, 0.50) 100%);
+  background: -moz-linear-gradient(rgba(255, 255, 255, 0.50)   0%,
+                                   rgba(255, 255, 255, 0.00)  50%,
+                                   rgba(255, 255, 255, 0.50) 100%);
+  background-color: rgb(255,255,255);
+}
+
+button:active {
+    box-shadow: inset 0px 0px 1px 1px rgba(0,0,0,0.9);
+}
+
+button:disabled {
+    color: rgb(200,200,200)!important;
+    border: 1px solid rgb(200,200,200)!important;
+}
+
+/*Remove button padding in FF*/
+button::-moz-focus-inner {
+    border:  0px;
+    padding: 0px;
+}
+
+button>input[type="file"] {
+    border-radius: 10px;
+    position  : absolute;
+    top       : 0px;
+    left      : 0px;
+    opacity   : 0.0;
+    width     : 100%;
+    height    : 100%;
+}
+

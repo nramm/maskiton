@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+            "file_exclude_patterns": [
+                "http-upload.sublime-workspace",
+                "client/coffee/*.js",
+                ".apdisk",
+                "._.gitignore",
+                ".emanlog"
+            ],
+            "folder_exclude_patterns": [
+                "webapp-build",
+                "node-modules"
+            ]
+		}
+	]
+}

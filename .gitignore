@@ -1,0 +1,4 @@
+*.pyc
+client/coffee/*.js
+*.sublime-workspace
+.apdisk

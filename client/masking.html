@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang=en>
+
+	<head>
+		<title>Mask Generator</title>
+		<meta charset=utf-8>
+		<link rel='stylesheet' type='text/css' href='css/ui/lightness/ui.css'>
+		<link rel='stylesheet' type='text/css' href='css/progressbar.css'>
+		<link rel='stylesheet' type='text/css' href='css/colorpicker.css'>
+		<link rel='stylesheet' type='text/css' href='css/button.css'>
+		<link rel='stylesheet' type='text/css' href='css/jsem.masking.css'>
+		<script data-main="scripts/masking" src="scripts/require.js"></script>
+	</head>
+
+	<body>
+
+		<div data-bind="ColorPicker: picker"></div>
+
+		<div class="tools">
+			<div class="group">
+			<button class="eraser"  data-bind="click: brushes.eraser.select, css: { selected: brushes.eraser.selected }"></button>
+			<button class="masker"  data-bind="click: brushes.masker.select, css: { selected: brushes.masker.selected }"></button>
+			<button class="brush "  data-bind="click: brushes.paint.select,  css: { selected: brushes.paint.selected  }"></button>
+			</div>
+			<div class="group">
+				<div><input type="range" data-bind="slider: { min: brush.min, max: brush.max, value: brush.softness }"/>edge softness</div>
+				<div><input type="range" data-bind="slider: { min: brush.min, max: brush.max, value: brush.size     }"/>brush width  </div>
+			</div>
+		</div>
+
+		<div class="masking_area" data-bind="size: viewsize">
+			<img class="back fitted" data-bind="img: { src: layers.background, size: masksize }">
+			<div class="layers fitted" data-bind="foreach: layers">
+				<canvas class="mask fitted" data-bind="canvas: { bind: mask, size: size }, style: { zIndex: mzindex, opacity: mopacity }"></canvas>
+				<canvas class="fill fitted" data-bind="canvas: { bind: fill, size: size }, style: { zIndex: fzindex, opacity: fopacity }"></canvas>
+			</div>
+		</div>
+
+		<div class="list">
+			<h3><span>Masks</span><button data-bind="click: addLayer">Add Mask</button></h3>
+			<table class="mask_table">
+				<tbody data-bind="foreach: layers">
+					<tr data-bind="click: select, style: { backgroundColor: rowcolor }">
+						<td><input class="maskname" type="text" data-bind="value: label"></td>
+						<td>
+							<div class="colorwell"
+							 data-bind="ColorWell: { rgb: rgb, picker: vm.picker, fade_in: 200 }"></div>
+						</td>
+						<td><button class="remove" data-bind="click: remove"></button></td>
+						<td class="spacer"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<script type="text/html" id="t_xmipp_som">
+			<h4 data-bind="text: name">XMIPP SOM Classification</h4>
+			X Dims:<input type="text" data-bind="value: xdim"   size="2"></input>
+			Y Dims:<input type="text" data-bind="value: ydim"   size="2"></input>
+			Radius:<input type="text" data-bind="value: radius" size="2"></input>
+			Alpha: <input type="text" data-bind="value: alpha"  size="4"></input>
+			Iters: <input type="text" data-bind="value: iters"  size="4"></input>
+			<button data-bind="click: start">Start Job</button>
+		</script>
+
+		<div class="list">
+			<h3>Available Actions</h3>
+			<!-- ko foreach: actions -->
+			<div class="action" data-bind="template: { name: templateid, data: $data }"></div>
+			<!-- /ko -->
+		</div>
+
+		<div class="list">
+		<h3>Job Results</h3>
+		<div class="result" data-bind="foreach: results" style="overflow: hidden">
+			<div style="border: 2px solid black; padding: 2px; margin: 1px;" data-bind="style: {backgroundColor: color}">
+				<h4 style="padding: 0px; margin: 5px;">XMIPP SOM Classification</h4>
+				<img data-bind="attr: { src: mask },
+				               event: { mousedown: vm.toggleZoomMask }"
+				         style="height: 50px;
+                               display: inline-block;
+                                 float: left;
+                                margin: 5px;
+                               padding: 0px;
+                                border: 1px solid black"/>
+				<table style="border: 1px; background-color: white;">
+					<tbody data-bind="foreach: avgs">
+						<tr data-bind="foreach: $data">
+							<td style="padding: 0px">
+								<img data-bind="bimg: $data.url,
+						                       event: { mouseover: vm.zoomOn,
+						                                mousedown: vm.toggleZoom}"
+						                 style="width: 50px;
+						                       height: 50px;
+						                      display: block;"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div style="display: block;
+				              clear: left;">
+					<button class="stop-result" data-bind="click: stop"></button>
+					<div class="result-progressbar" data-bind="pbar: progress"></div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<div id="zoom" style="height: 200px;
+		                       width: 200px;
+		                    position: fixed;
+		                         top: 50%;
+		                        left: 20px;
+		                      border: solid black 2px;
+		                     z-index: 5;
+		                     display: none">
+			<img class="class-average" style="width: 100%; position:absolute;"/>
+			<img class="class-mask"    style="width: 100%;
+			                               position:absolute;
+			                                display: none;
+			                                opacity: 0.5;"/>
+		</div>
+
+	</body>
+
+</html>
+
