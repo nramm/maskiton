@@ -33,7 +33,6 @@
       Uploader.prototype.fileStatus = function(nextCall) {
         var xhr,
           _this = this;
-        console.log('getting file status');
         xhr = new XHR();
         xhr.onerror = function() {
           return _this.status('no response from server');
@@ -50,7 +49,7 @@
           }
         };
         xhr.timeout.start = 5000;
-        xhr.timeout.transfer = 5000;
+        xhr.timeout.transfer = 20000;
         xhr.timeout.onstart = function() {
           return _this.status('connect timed out');
         };
@@ -78,7 +77,6 @@
         this.progress.reset(offset);
         xhr = new XHR();
         xhr.onsuccess = function(event) {
-          console.log(event);
           _this.progress.done(_this.file.size);
           _this.onupload(JSON.parse(event.target.response));
           return _this.status('uploaded');
@@ -96,7 +94,6 @@
         xhr.outgoing.done.subscribe(function(done) {
           return _this.progress.done(offset + done);
         });
-        console.log("resuming upload @ offset " + offset + " of " + this.file.size + ", " + (this.file.size - offset) + "remaining");
         this.stop = function() {
           return xhr.abort();
         };

@@ -12,7 +12,7 @@
         this.onabort = function() {};
         this.abort = function() {};
         this.status = observable('waiting');
-        this.throttle = 100;
+        this.throttle = 200;
         this.outgoing = Progress();
         this.incoming = Progress();
         this.incoming.headers = observable(null);

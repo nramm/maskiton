@@ -6,6 +6,7 @@ import stat
 import errno
 import shutil
 import socket
+import signal
 
 import fsops
 
@@ -13,10 +14,11 @@ class AlreadyLocked(OSError):
     pass
 
 class FSLock(object):
-    
+
     def __init__(self,path):
         self.path = path
         self.retry_delay = 0.1
+        self.handlers = {}
 
     @property
     def locked(self):
@@ -38,6 +40,12 @@ class FSLock(object):
             os.link(self.mylockpath,self.lockpath)
             if os.stat(self.mylockpath).st_nlink != 2:
                 raise AlreadyLocked
+            def handler(*args):
+                self.release()
+                print 'signal handler caught exception and closed lock'
+                exit()
+            for event in [15]:
+                self.handlers[event] = signal.signal(event,handler)
             return True
         except OSError, e:
             if e.errno != errno.EEXIST: raise
@@ -47,6 +55,9 @@ class FSLock(object):
     def release(self):
         fsops.remove(self.mylockpath)
         fsops.remove(self.lockpath)
+        for event in self.handlers:
+            signal.signal(event,self.handlers[event])
+        self.handlers = {}
 
     def __enter__(self):
         while True:
@@ -54,11 +65,13 @@ class FSLock(object):
                 self.acquire()
                 return self
             except AlreadyLocked:
+                print 'waiting for lock:',self.lockpath
                 time.sleep(self.retry_delay)
 
     def __exit__(self,et,ev,st):
         self.release()
-        if ev: print ev
+        if ev:
+            print 'lock released with exception:', ev
 
 def test_lock_single(path):
     import numpy as np
@@ -80,7 +93,7 @@ def test_lock_single(path):
 
 def test_lock_many(path,count):
     '''
-    ideally this stress test should be run 
+    ideally this stress test should be run
     from multiple computers
     with access to a shared fs
     '''

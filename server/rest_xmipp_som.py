@@ -1,6 +1,7 @@
 import os
 import time
 import json
+import signal
 import hashlib
 import multiprocessing as mp
 
@@ -66,7 +67,7 @@ def rest_som_stop(jobid,callback):
     try:
         job_status = FSDict(rest_pathForJobId(jobid))
         pid = job_status['pid']
-        code = os.kill(pid,9)
+        code = os.kill(pid,signal.SIGTERM)
         callback({
             'killed': True,
         })
@@ -92,6 +93,8 @@ def rest_som_start(host,params,callback=None):
     hed,img = rest_queryStackPath(projectid,stackid)
     mask = pathFromId(maskid,ext='.png')
 
+    print 'parent group process id:',os.getpgrp()
+
     jobid = hashargs([hed,img,mask,xdim,ydim,radius,levels,iters,alpha])
     job = mp.Process(target=som_start,args=[host,hed,img,mask,xdim,ydim,radius,levels,iters,alpha])
     job.start()
@@ -103,7 +106,7 @@ def rest_som_start(host,params,callback=None):
 def som_start(host,hed,img,mask,xdim,ydim,radius,levels,iters,alpha):
     jobid = hashargs([hed,img,mask,xdim,ydim,radius,levels,iters,alpha])
     cache = FSCache(hed_som,hed,img,mask,xdim,ydim,radius,levels,iters,alpha)
-    print 'starting som job, cached:',cache.cached,'running:',cache.locked
+    print 'starting som job, cached:',cache.cached,'running:',cache.locked,'pgid:',os.getpgrp()
     if not cache.cached and not cache.locked:
         with FSDict(rest_pathForJobId(jobid)) as status:
             status['stat'] = cache.stat.path

@@ -32,12 +32,15 @@ pollStackAverage = (projectid,stackid,callb) ->
         $.ajax
             url: url
             success: (data) ->
+                if typeof data == 'string'
+                    data = JSON.parse data
                 if not data.done or data.done < data.total
-                    setTimeout poll, 1000
-                console.log 'polling for stack average @',url,'->',data.url
+                    setTimeout poll, 2000
+                console.log 'new stack average @',url,'->',data,data.url
+                console.log typeof data
                 callb data.url
             error: ->
-                setTimeout poll, 1000
+                setTimeout poll, 2000
     poll()
 
 require ['base'
@@ -150,13 +153,15 @@ require ['base'
                             if data.killed
                                 result.progress.rgba [200,100,100,1]
                                 model.results.tracked[url] = false
-            poll_time = 5000
+            poll_time = 1000
             result.refresh = ->
                 console.log 'polling for job status:',url
                 $.ajax
                     url: url
                     timeout: poll_time * 2
                     success: (data) ->
+                        if typeof data == 'string'
+                            data = JSON.parse data
                         console.log 'received status update:',url
                         if data.done and data.total
                             result.progress.percent ( data.done / data.total )
@@ -194,6 +199,8 @@ require ['base'
                     layer = model.layers.selected()
                     if layer
                         layer.save "#{PROCESSING_SERVER}/images", (data) ->
+                            if typeof data == 'string'
+                                data = JSON.parse data
                             console.log 'mask saved to server under id:', data.id
                             params =
                                 maskid : data.id
@@ -205,6 +212,8 @@ require ['base'
                                 alpha : xmipp_som.alpha()
                                 iters : xmipp_som.iters()
                             $.post "#{PROCESSING_SERVER}/xmipp/som", JSON.stringify(params), (data)->
+                                if typeof data == 'string'
+                                    data = JSON.parse data
                                 console.log 'server job is at:',data.url
                                 model.addResult data.url,layer,params.xdim,params.ydim
         ]
@@ -277,6 +286,8 @@ require ['base'
             url = ko.utils.unwrapObservable _url()
             img.onload = ->
                 _url().last = url
+            img.onerror = ->
+                img.src = undefined
             img.src = url
 
 

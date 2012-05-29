@@ -26,7 +26,7 @@ def hed_dims(cache,hedpath,imgpath):
         return (int(matches.group(1)),
                 int(matches.group(2)),
                 int(matches.group(3)))
-    raise ValueError('could not determine dimensions for imagic stack: %s'%path)
+    raise ValueError('could not determine dimensions for imagic stack: %s'%hedpath)
 
 stdnull = open('/dev/null','w')
 def cli(args,stdout=stdnull,stderr=stdnull):
@@ -38,7 +38,7 @@ def cli(args,stdout=stdnull,stderr=stdnull):
         raise
 
 def cli_r(args,stderr=stdnull):
-    return sp.check_result(args,stderr=stderr)
+    return sp.check_output(args,stderr=stderr)
 
 def hed2sel(cache,hed,img,nums=None):
     spis = cache(hed2spis,hed,img,nums)
@@ -71,6 +71,9 @@ def sel_reduce(cache,sel,level):
     return cache(spis2sel,spis)
 
 def hed2sel_pyramid(cache,hed,img,levels=1,splitsize=200):
+    print 'splitting stack into subsets'
+    print '   hed:',hed
+    print '   img:',img
     count,_,_ = cache(hed_dims,hed,img)
     permuted  = cache(permute,count)
     subsets   = splitby(permuted,splitsize)
@@ -118,9 +121,9 @@ def hed_average(cache,hed,img):
         status['done']    = None
         status['avg.spi'] = None
     for i,t,sels in follow(hed2sel_pyramid,hed,img):
+        print 'average iter',i,t,sum,avg
         _avg = cache(sel_average,sels[0])
         count,sum,avg = cache(running_average,_avg,count,sum,avg)
-        print 'average iter',i,t,avg
         with cache.stat as status:
             status['total']   = t
             status['done']    = i
@@ -213,7 +216,7 @@ def sel_som(cache,dat,xdim=5,ydim=4,cvin=None,iters=None,radius=None,alpha=None)
     args = ['xmipp_classify_som',
             '-i',dat,
             '-o',root,
-            '-rect',
+            '-hexa',
             '-saveclusters',
             '-randomcodevectors']
     if alpha  : args += ['-alpha',str(alpha)]

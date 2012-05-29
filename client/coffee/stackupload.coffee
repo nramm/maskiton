@@ -29,7 +29,7 @@ public_datasets = [
 ]
 
 
-require ['jquery-1.7.1',
+require ['jquery-1.7.2',
          'knockout-2.0.0',
          'md5',
          'useful',

@@ -16,7 +16,9 @@ def rest_average(hed,img):
 def rest_average_status(projectid,stackid,callback):
     hed,img = rest_queryStackPath(projectid,stackid)
     cache = FSCache(hed_average,hed,img)
-    print 'starting avg job, cached:',cache.cached,'running:',cache.locked,cache.lockpath
+    print 'starting avg job, cached:',cache.cached,'running:',cache.locked
+    print '   hed:',hed
+    print '   img:',img
     if not cache.cached and not cache.locked:
         mp.Process(target=rest_average,args=[hed,img]).start()
     status = cache.stat

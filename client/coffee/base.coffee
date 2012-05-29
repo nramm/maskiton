@@ -12,7 +12,7 @@ getCenter = (element) ->
 
 getBounds = (element) ->
     bounds = element.offset()
-    extend bounds, 
+    extend bounds,
         bottom : bounds.top  + element.outerHeight()
         right  : bounds.left + element.outerWidth()
 
@@ -22,10 +22,10 @@ self.extend = (obj, ext) ->
         if ext.hasOwnProperty key then obj[key] = ext[key]
     return obj
 
-define ['jquery-1.7.1'
+define ['jquery-1.7.2'
         'knockout-2.0.0'
         'jquery-ui-1.8.16'], ->
-    
+
     $.fn.under = (event) ->
         bounds = getBounds this
         if event.pageY < bounds.top or event.pageY > bounds.bottom
@@ -46,7 +46,7 @@ define ['jquery-1.7.1'
     dependent : (options) ->
         bound = ko.dependentObservable options
         return bound
-    
+
     throttle : (throttle,tothrottle) ->
         throttling = false
         run = ->
@@ -77,9 +77,9 @@ define ['jquery-1.7.1'
     subscriptions : (subs) ->
         for sub in subs
             subscription sub
-    
+
     randomF : (min,max) -> Math.random()*(max-min)+min
     randomI : (min,max) -> Math.floor randomF min, max
 
 
-    
+

@@ -131,6 +131,8 @@ def mkdir(path):
     return path
 
 def lncp(src,dst,sym=False):
+    if os.path.exists(dst):
+        return dst
     dst = pathto(dst)
     try:
         try: os.link(src,dst)

@@ -18,7 +18,7 @@ cachePath = (id) ->
     return fs.path.join CONFIG.UPLOAD_PATH, id
 
 ensureCache = (call) ->
-    mkdirp CONFIG.UPLOAD_PATH, 777, (error) -> 
+    mkdirp CONFIG.UPLOAD_PATH, 777, (error) ->
         call error, CONFIG.UPLOAD_PATH
 
 fileSize = (path,call) ->
@@ -28,7 +28,7 @@ fileSize = (path,call) ->
         else if error
             return call error, null
         else
-            return call null, stats.size 
+            return call null, stats.size
 
 parseContentRangeHeader = (request) ->
     start  = 0
@@ -61,17 +61,31 @@ app.options '/uploads/:fileid', (request,response) ->
     response.setHeader 'Access-Control-Max-Age', '0'
     response.send null
 
+uploads = {}
+printStatus = ->
+    console.log """\033[2J\033[0;0H"""
+    console.log uploads
+setInterval printStatus, 1000
+
 app.put '/uploads/:fileid', (request,response) ->
 
     request.pause()
+
+    if request.params.fileid not of uploads
+        uploads[request.params.fileid] = {}
+
+    uploads[request.params.fileid].status = 'uploading'
 
     sendError = (error) ->
         response.statusCode = 500
         response.setHeader 'Access-Control-Allow-Origin', '*'
         response.write error
         response.end()
-    
+        uploads[request.params.fileid].status = 'error'
+        request.close()
+
     sendSuccess = (written,path) ->
+        uploads[request.params.fileid].status = 'done'
         response.statusCode = 202
         response.setHeader 'Access-Control-Allow-Origin', '*'
         response.write JSON.stringify
@@ -83,36 +97,43 @@ app.put '/uploads/:fileid', (request,response) ->
         response.end()
 
     ensureCache (error,cache) ->
-        
+
         if error then throw error
-        
+
         path = fs.path.join cache, request.params.fileid
 
         [start,end,_] = parseContentRangeHeader request
         console.log "resuming file upload #{path} @ #{start}"
         console.log "receiving #{request.headers['content-length']}"
+        uploads[request.params.fileid].current = start
+        uploads[request.params.fileid].start = start
+        uploads[request.params.fileid].end = end
 
-        stream = fs.createWriteStream path, 
-            bufferSize: 1024*1024
+        request.on 'data', (data) ->
+            uploads[request.params.fileid].current += data.length
+
+        stream = fs.createWriteStream path,
+            bufferSize: 1024
             encoding: 'binary'
             start: start
             flags: if start != 0 then 'r+' else 'w'
-        
+
         ended = false
 
         stream.on 'close', ->
             console.log 'file stream closed'
             if ended then sendSuccess end-start, path
             else sendError 'file write did not complete'
-        
+
         request.on 'close', ->
             if not ended then console.log 'network stream closed early'
-        
+
         request.on 'end', ->
             console.log 'transfer finished'
             ended = true
-        
+
         request.pipe stream
+
         request.resume()
 
 app.listen(url.parse(CONFIG.UPLOAD_SERVER).port)

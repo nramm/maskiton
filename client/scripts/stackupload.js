@@ -40,7 +40,7 @@
     }
   ];
 
-  require(['jquery-1.7.1', 'knockout-2.0.0', 'md5', 'useful', 'time', 'upload', 'progress'], function() {
+  require(['jquery-1.7.2', 'knockout-2.0.0', 'md5', 'useful', 'time', 'upload', 'progress'], function() {
     var ViewModel, colors, dec, hashFile, inc, maskOnStack, progress, time, uiUploadProgress, upload, uploadStack, useful, _, _i;
     _ = 5 <= arguments.length ? __slice.call(arguments, 0, _i = arguments.length - 4) : (_i = 0, []), useful = arguments[_i++], time = arguments[_i++], upload = arguments[_i++], progress = arguments[_i++];
     uploadStack = function(hedid, imgid, callb) {

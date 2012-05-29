@@ -34,7 +34,7 @@
     return obj;
   };
 
-  define(['jquery-1.7.1', 'knockout-2.0.0', 'jquery-ui-1.8.16'], function() {
+  define(['jquery-1.7.2', 'knockout-2.0.0', 'jquery-ui-1.8.16'], function() {
     $.fn.under = function(event) {
       var bounds;
       bounds = getBounds(this);

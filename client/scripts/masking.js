@@ -51,12 +51,14 @@
       return $.ajax({
         url: url,
         success: function(data) {
-          if (!data.done || data.done < data.total) setTimeout(poll, 1000);
-          console.log('polling for stack average @', url, '->', data.url);
+          if (typeof data === 'string') data = JSON.parse(data);
+          if (!data.done || data.done < data.total) setTimeout(poll, 2000);
+          console.log('new stack average @', url, '->', data, data.url);
+          console.log(typeof data);
           return callb(data.url);
         },
         error: function() {
-          return setTimeout(poll, 1000);
+          return setTimeout(poll, 2000);
         }
       });
     };
@@ -216,7 +218,7 @@
             });
           }
         };
-        poll_time = 5000;
+        poll_time = 1000;
         result.refresh = function() {
           console.log('polling for job status:', url);
           $.ajax({
@@ -224,6 +226,7 @@
             timeout: poll_time * 2,
             success: function(data) {
               var col, row;
+              if (typeof data === 'string') data = JSON.parse(data);
               console.log('received status update:', url);
               if (data.done && data.total) {
                 result.progress.percent(data.done / data.total);
@@ -276,6 +279,7 @@
             if (layer) {
               return layer.save("" + PROCESSING_SERVER + "/images", function(data) {
                 var params;
+                if (typeof data === 'string') data = JSON.parse(data);
                 console.log('mask saved to server under id:', data.id);
                 params = {
                   maskid: data.id,
@@ -288,6 +292,7 @@
                   iters: xmipp_som.iters()
                 };
                 return $.post("" + PROCESSING_SERVER + "/xmipp/som", JSON.stringify(params), function(data) {
+                  if (typeof data === 'string') data = JSON.parse(data);
                   console.log('server job is at:', data.url);
                   return model.addResult(data.url, layer, params.xdim, params.ydim);
                 });
@@ -408,6 +413,9 @@
         url = ko.utils.unwrapObservable(_url());
         img.onload = function() {
           return _url().last = url;
+        };
+        img.onerror = function() {
+          return img.src = void 0;
         };
         return img.src = url;
       }

@@ -2,22 +2,22 @@
 define ['events','time','progress'], ({observable,computed,throttle},time,{Progress}) ->
 
     class XHR
-        
+
         constructor : ->
-            
+
             @onsuccess = ->
             @onerror   = ->
             @onabort   = ->
             @abort     = ->
-        
+
             @status = observable 'waiting'
-            @throttle = 100
+            @throttle = 200
             @outgoing = Progress()
             @incoming = Progress()
             @incoming.headers = observable null
             @incoming.body = observable null
-            
-            @timeout = 
+
+            @timeout =
                 start : null
                 onstart : ->
                 transfer : null
@@ -40,7 +40,7 @@ define ['events','time','progress'], ({observable,computed,throttle},time,{Progr
 
             @incoming.reset 0
             @outgoing.reset 0
-            
+
             xhr.onloadend = =>
                 s_timer?.stop()
                 t_timer?.stop()
@@ -72,7 +72,7 @@ define ['events','time','progress'], ({observable,computed,throttle},time,{Progr
             xhr.onerror = (error) =>
                 @status 'error'
                 @onerror error
-            
+
             xhr.open method, url
             for header of headers
                 xhr.setRequestHeader header, headers[header]
@@ -80,23 +80,23 @@ define ['events','time','progress'], ({observable,computed,throttle},time,{Progr
             s_timer?.start()
             @abort = -> xhr.abort()
 
-        
-        
-        
+
+
+
 
     self.testXHR = ->
         xhr = new XHR()
         xhr.timeout.connect.after 0
         xhr.timeout.transfer.after 0
         computed -> console.log 'status:', xhr.status()
-        computed -> 
+        computed ->
             console.log 'received:', xhr.incoming.progress.done()
             console.log '      of:', xhr.incoming.progress.total(), '@', xhr.incoming.progress.rate.nice()
-        computed -> 
+        computed ->
             console.log 'sent:', xhr.outgoing.progress.done()
             console.log '  of:', xhr.outgoing.progress.total(), '@', xhr.outgoing.progress.rate.nice()
         xhr.send 'PUT', 'http://localhost:8888/uploads/test', "#{[0...5000000]}"
         return xhr
-    
+
     return XHR
 
