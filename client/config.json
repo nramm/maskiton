@@ -1,0 +1,7 @@
+{
+
+    "STATIC_SERVER"    : "http://node-2",
+    "UPLOAD_SERVER"    : "http://node-2:9000",
+    "PROCESS_SERVER"   : "http://node-2:9050"
+
+}

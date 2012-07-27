@@ -1,5 +1,5 @@
 
-PROCESSING_SERVER = 'http://amibox04.scripps.edu:9050'
+PROCESSING_SERVER = 'http://node-2:9050'
 
 equals = (a,b) ->
     for x of a

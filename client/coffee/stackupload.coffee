@@ -1,6 +1,6 @@
-STATIC_SERVER  = 'http://amibox04.scripps.edu:80'
-UPLOAD_SERVER  = 'http://amibox04.scripps.edu:9000'
-PROCESS_SERVER = 'http://amibox04.scripps.edu:9050'
+STATIC_SERVER  = 'http://node-2:80'
+UPLOAD_SERVER  = 'http://node-2:9000'
+PROCESS_SERVER = 'http://node-2:9050'
 
 self.path =
     splitext: (path) ->

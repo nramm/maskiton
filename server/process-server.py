@@ -8,13 +8,8 @@ import tornado.ioloop
 import tornado.web
 import tornado.httpserver
 
-from rest_image import ImageUpload
-from rest_xmipp_som import SOMJob, SOMJobs
-from rest_stack_handling import StackUpload
-from rest_stack_average  import StackAverage
-
-with open('config.json','r') as fp:
-    CONFIG = json.load(fp)
+from config import CONFIG
+from rest import ImageUpload, SOMJob, SOMJobs, StackUpload, StackAverage
 
 application = tornado.web.Application([
     tornado.web.URLSpec(r'/xmipp/som',SOMJobs),
@@ -29,5 +24,3 @@ if __name__ == "__main__":
     server.bind(urlparse.urlparse(CONFIG['PROCESS_SERVER']).port)
     server.start(0)
     tornado.ioloop.IOLoop.instance().start()
-
-

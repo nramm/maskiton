@@ -5,7 +5,7 @@ fs      = require 'fs'
 fs.path = require 'path'
 
 CONFIG = do ->
-    data = fs.readFileSync 'config.json', 'utf8'
+    data = fs.readFileSync '../client/config.json', 'utf8'
     return JSON.parse data
 
 serverPath = do ->
@@ -65,7 +65,7 @@ uploads = {}
 printStatus = ->
     console.log """\033[2J\033[0;0H"""
     console.log uploads
-setInterval printStatus, 1000
+setInterval printStatus, 5000
 
 app.put '/uploads/:fileid', (request,response) ->
 
