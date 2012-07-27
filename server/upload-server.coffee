@@ -1,12 +1,13 @@
+require 'coffee-script'
 express = require 'express'
 mkdirp  = require 'express/node_modules/mkdirp'
 url     = require 'url'
 fs      = require 'fs'
 fs.path = require 'path'
 
-CONFIG = do ->
-    data = fs.readFileSync '../client/config.json', 'utf8'
-    return JSON.parse data
+CONFIG  = require './config.coffee'
+
+console.log CONFIG
 
 serverPath = do ->
     matcher = new RegExp(CONFIG.UPLOAD_PATH)
@@ -82,7 +83,6 @@ app.put '/uploads/:fileid', (request,response) ->
         response.write error
         response.end()
         uploads[request.params.fileid].status = 'error'
-        request.close()
 
     sendSuccess = (written,path) ->
         uploads[request.params.fileid].status = 'done'
@@ -101,6 +101,7 @@ app.put '/uploads/:fileid', (request,response) ->
         if error then throw error
 
         path = fs.path.join cache, request.params.fileid
+        uploads[request.params.fileid].path = path
 
         [start,end,_] = parseContentRangeHeader request
         console.log "resuming file upload #{path} @ #{start}"

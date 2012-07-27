@@ -11,8 +11,7 @@ from tornado.web import RequestHandler, asynchronous
 
 from misc import fromDataURL
 
-with open('config.json','r') as fp:
-    CONFIG = json.load(fp)
+from config import CONFIG
 
 mime_to_ext = {
     'image/jpeg'   : '.jpg',

@@ -2,6 +2,7 @@
 # ecoding: utf-8
 
 import json
+import pprint
 import urlparse
 
 import tornado.ioloop
@@ -10,6 +11,8 @@ import tornado.httpserver
 
 from config import CONFIG
 from rest import ImageUpload, SOMJob, SOMJobs, StackUpload, StackAverage
+
+pprint.pprint(CONFIG)
 
 application = tornado.web.Application([
     tornado.web.URLSpec(r'/xmipp/som',SOMJobs),

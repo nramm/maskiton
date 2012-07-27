@@ -1,0 +1,380 @@
+nohup: ignoring input
+{ STATIC_SERVER: 'http://node-2',
+  UPLOAD_SERVER: 'http://node-2:9000',
+  PROCESS_SERVER: 'http://node-2:9050',
+  IMAGE_PATH: '/www/assets/static/images',
+  IMAGE_URL: 'static/images',
+  STACK_PATH: '/www/assets/static/stacks',
+  UPLOAD_PATH: '/www/assets/cached/uploads',
+  CACHE_PATH: '/www/assets/cached/processing',
+  JOB_PATH: '/www/assets/cached/jobs',
+  '!APPION_SERVER': 'mysqldb host',
+  '!APPION_USER': 'username',
+  '!APPION_PASSWORD': 'password',
+  '!APPION_PROJECTID': 0 }
+client requested status of file: 4d2869084c03c0b6550c65bc131ffdb7
+status for file: /www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7
+resuming file upload /www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7 @ 1778226680
+receiving 8802486792
+network stream closed early
+file stream closed
+client requested status of file: 4d2869084c03c0b6550c65bc131ffdb7
+status for file: /www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7
+resuming file upload /www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7 @ 1784936080
+receiving 8795777392
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1785444976,
+     start: 1784936080,
+     end: 10580713472 } }
+network stream closed early
+file stream closed
+client requested status of file: 4d2869084c03c0b6550c65bc131ffdb7
+status for file: /www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7
+resuming file upload /www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7 @ 1791571584
+receiving 8789141888
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1810151048,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1828996768,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1843709872,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1864517544,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1885910072,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1908515320,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1930505544,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1949221328,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 1975121080,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2011356696,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2048622600,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2084470792,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2119778768,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2133306696,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2169384264,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2207078512,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2243065016,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2279356032,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2311515920,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2322768376,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2360818728,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2387288072,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2421110400,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2455108192,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2490161264,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2508102736,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2547418544,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2583558752,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2619780424,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2658826848,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2695574256,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2710588704,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2746804584,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2780267952,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2813545328,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2846876608,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2884242744,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2902531792,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2939291576,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 2974472736,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 3007584984,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 3046356608,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 3083315104,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 3102364360,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 3136608368,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 3170774184,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 3207751448,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 3246616336,
+     start: 1791571584,
+     end: 10580713472 } }
+[2J[0;0H
+{ '4d2869084c03c0b6550c65bc131ffdb7': 
+   { status: 'uploading',
+     path: '/www/assets/cached/uploads/4d2869084c03c0b6550c65bc131ffdb7',
+     current: 3281990384,
+     start: 1791571584,
+     end: 10580713472 } }
