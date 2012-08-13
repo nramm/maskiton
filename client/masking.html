@@ -75,7 +75,7 @@
 		<h3>Job Results</h3>
 		<div class="result" data-bind="foreach: results" style="overflow: hidden">
 			<div style="border: 2px solid black; padding: 2px; margin: 1px;" data-bind="style: {backgroundColor: color}">
-				<h4 style="padding: 0px; margin: 5px;">XMIPP SOM Classification</h4>
+				<h4 style="padding: 0px; margin: 5px;"><a data-bind="attr: { href: urlref }">XMIPP SOM Classification</a></h4>
 				<img data-bind="attr: { src: mask },
 				               event: { mousedown: vm.toggleZoomMask }"
 				         style="height: 50px;

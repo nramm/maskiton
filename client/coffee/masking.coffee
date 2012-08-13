@@ -1,4 +1,5 @@
 
+STATIC_SERVER = 'http://node-2'
 PROCESSING_SERVER = 'http://node-2:9050'
 
 equals = (a,b) ->
@@ -153,6 +154,8 @@ require ['base'
                             if data.killed
                                 result.progress.rgba [200,100,100,1]
                                 model.results.tracked[url] = false
+                urlref : ko.observable null
+
             poll_time = 1000
             result.refresh = ->
                 console.log 'polling for job status:',url
@@ -163,6 +166,8 @@ require ['base'
                         if typeof data == 'string'
                             data = JSON.parse data
                         console.log 'received status update:',url
+                        if data.id
+                            result.urlref  STATIC_SERVER + "/som_classes.html?id=#{data.id}"
                         if data.done and data.total
                             result.progress.percent ( data.done / data.total )
                         if data.avgs

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang=en>
+
+    <head>
+        <title>Classification Results</title>
+        <meta charset=utf-8>
+        <link rel='stylesheet' type='text/css' href='css/ui/lightness/ui.css'>
+        <link rel='stylesheet' type='text/css' href='css/progressbar.css'>
+        <link rel='stylesheet' type='text/css' href='css/colorpicker.css'>
+        <link rel='stylesheet' type='text/css' href='css/button.css'>
+        <link rel='stylesheet' type='text/css' href='css/jsem.masking.css'>
+        <script src="scripts/jquery-1.7.2.js"></script>
+        <script data-main="scripts/classes" src="scripts/require.js"></script>
+    </head>
+
+    <body>
+
+        <div class="result" style="overflow: hidden">
+            <div style="border: 2px solid black; padding: 2px; margin: 1px;" >
+                <h4 style="padding: 0px; margin: 5px;">XMIPP SOM Classification</h4>
+                <img data-bind="attr: { src: vm.result.mask },
+                               event: { mousedown: vm.toggleZoomMask }"
+                         style="height: 50px;
+                               display: inline-block;
+                                 float: left;
+                                margin: 5px;
+                               padding: 0px;
+                                border: 1px solid black"/>
+                <table style="border: 1px; background-color: white;">
+                    <tbody data-bind="foreach: vm.result.avgs">
+                        <tr data-bind="foreach: $data">
+                            <td style="padding: 0px">
+                                <img data-bind="bimg: $data.url,
+                                               event: { mouseover: vm.zoomOn,
+                                                        mousedown: vm.toggleZoom}"
+                                         style="width: 50px;
+                                               height: 50px;
+                                              display: block;"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="display: block;
+                              clear: left;">
+                    <div class="result-progressbar" data-bind="pbar: vm.result.progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="zoom" style="height: 200px;
+                               width: 200px;
+                            position: fixed;
+                                 top: 50%;
+                                left: 20px;
+                              border: solid black 2px;
+                             z-index: 5;
+                             display: none">
+            <img class="class-average" style="width: 100%; position:absolute;"/>
+            <img class="class-mask"    style="width: 100%;
+                                           position:absolute;
+                                            display: none;
+                                            opacity: 0.5;"/>
+        </div>
+
+    </body>
+
+</html>
+
