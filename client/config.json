@@ -1,7 +1,7 @@
 {
 
-    "STATIC_SERVER"    : "http://node-2",
-    "UPLOAD_SERVER"    : "http://node-2:9000",
-    "PROCESS_SERVER"   : "http://node-2:9050"
+    "STATIC_SERVER"    : "http://maskiton.scripps.edu",
+    "UPLOAD_SERVER"    : "http://maskiton.scripps.edu:9001",
+    "PROCESS_SERVER"   : "http://maskiton.scripps.edu:9002"
 
 }

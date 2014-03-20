@@ -11,13 +11,13 @@ from tornado.web import RequestHandler, asynchronous
 from misc import reglob
 from fs import FSCache, FSDict
 from xmipp import hed_som
-from rest_image import pathFromId, rest_saveImagePath
+from rest_image import pathFromId, rest_saveImagePath, urlAsPath
 from rest_stack_handling import rest_queryStackPath
 
-with open('config.json','r') as fp:
-    CONFIG = json.load(fp)
-    CONFIG['SOM_URL']  = 'xmipp/som'
-    CONFIG['SOM_PATH'] = os.path.join(CONFIG['JOB_PATH'],'xmipp/som')
+from config import CONFIG
+
+CONFIG['SOM_URL']  = 'xmipp/som'
+CONFIG['SOM_PATH'] = os.path.join(CONFIG['JOB_PATH'],'xmipp/som')
 
 def hashargs(args=[],kwargs={}):
     md5 = hashlib.md5()
@@ -45,6 +45,23 @@ def rest_jobIdFromPath(path):
 def rest_pathForURL(url):
     return rest_pathForJobId(rest_jobIdFromURL(url))
 
+import tarfile
+
+def rest_TarFiles(jobid,paths):
+    tar_id = hashargs(paths)
+    tar_path = os.path.join(CONFIG['IMAGE_PATH'],tar_id+'.tar')
+    tar_url  = os.path.join(CONFIG['STATIC_SERVER'],CONFIG['IMAGE_URL'])
+    tar_url  = os.path.join(tar_url,tar_id+'.tar')
+    if not os.path.exists(tar_path):
+        with tarfile.open(tar_path,'w') as archive:
+            for r,row in enumerate(paths):
+                for c,url in enumerate(row):
+                    path = urlAsPath(url)
+                    archive.add(path,'%s/%d-%d.png'%(jobid,r,c))
+        with FSDict(rest_pathForJobId(jobid)) as status:
+            status['tar'] = tar_url
+    return tar_url
+
 def rest_som_status(jobid,callback):
     try:
         job_status = FSDict(rest_pathForJobId(jobid))
@@ -52,12 +69,17 @@ def rest_som_status(jobid,callback):
         avgs = processing_status['avgs']
         avgs = [[rest_saveImagePath(avg) for avg in row] for row in avgs]
         callback({
+            'id'    : jobid,
             'done'  : processing_status.get('done',None),
             'total' : processing_status.get('total',None),
+            'mask'  : job_status.get('mask',None),
+            'tar'   : rest_TarFiles(jobid,avgs),
             'avgs'  : avgs,
         })
-    except:
+    except Exception as error:
+        print '[exception]', error
         callback({
+            'id'    : None,
             'done'  : None,
             'total' : None,
             'avgs'  : None,
@@ -99,8 +121,8 @@ def rest_som_start(host,params,callback=None):
     job = mp.Process(target=som_start,args=[host,hed,img,mask,xdim,ydim,radius,levels,iters,alpha])
     job.start()
     callback({
-        'id'  : jobid,
-        'url' : rest_urlForJobId(host,jobid)
+        'id'   : jobid,
+        'url'  : rest_urlForJobId(host,jobid),
     })
 
 def som_start(host,hed,img,mask,xdim,ydim,radius,levels,iters,alpha):
@@ -109,6 +131,7 @@ def som_start(host,hed,img,mask,xdim,ydim,radius,levels,iters,alpha):
     print 'starting som job, cached:',cache.cached,'running:',cache.locked,'pgid:',os.getpgrp()
     if not cache.cached and not cache.locked:
         with FSDict(rest_pathForJobId(jobid)) as status:
+            status['mask'] = rest_saveImagePath(mask)
             status['stat'] = cache.stat.path
             status['pid']  = os.getpid()
         hed_som(cache,hed,img,mask,xdim,ydim,radius,levels,iters,alpha)

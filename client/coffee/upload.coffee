@@ -1,7 +1,7 @@
 define ['time','events','progress','xhr'], (time,{observable,computed,throttle},progress,XHR) ->
 
     sliceFile = (file,src=0,dst=file.size) ->
-        _sliceFile = file.webkitSlice || file.mozSlice
+        _sliceFile = file.slice or file.webkitSlice or file.mozSlice
         _sliceFile.call file, src, dst
 
     class Uploader

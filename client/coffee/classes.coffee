@@ -1,5 +1,5 @@
 
-PROCESSING_SERVER = 'http://node-2:9050'
+PROCESS_SERVER = 'undefined'
 
 equals = (a,b) ->
     for x of a
@@ -32,37 +32,47 @@ require ['base'
          'colorpicker'
          'brushes'
          'mask'
-         'progress'], (base,color,canvas,ColorPicker,brushes,Layer,progress) ->
+         'progress',
+         'text!../config.json'], (base,color,canvas,ColorPicker,brushes,Layer,progress,config) ->
+
+    { PROCESS_SERVER } = JSON.parse config
 
     ViewModel = ->
 
         model = {}
 
-        model.zoomOn = (avg) ->
-            $('#zoom .class-average').attr('src',avg.url.last)
+        model.zoom = $('#zoom')
+        model.zoom.mask = $('.mask',model.zoom)
+        model.zoom.avg = $('.average',model.zoom)
+
+        model.zoom.draggable
+            stop: (_,ui) ->
+                ui.helper.css 'position','fixed'
+
+        model.zoom.resizable
+            aspectRatio: true
+
+        model.zoom.on = (avg) ->
+            model.zoom.avg.attr('src',avg.url.loaded)
             return false
 
-        model.toggleZoom = (event) ->
-            $('#zoom').toggle(10)
-            $('#zoom').draggable
-                stop: (_,ui) ->
-                    ui.helper.css 'position','fixed'
-            $('#zoom').resizable
-                aspectRatio: true
+        model.zoom.toggleMask = ->
+            model.zoom.mask.attr 'src', model.result.mask()
+            model.zoom.mask.toggle 10
             return false
 
-        model.toggleZoomMask = (result) ->
-            $('#zoom .class-mask').attr('src',model.result.mask()).toggle(10)
+        model.zoom.toggleZoom = ->
+            model.zoom.toggle 10
             return false
 
         model.poll_time = 1000
 
-        model.url =  PROCESSING_SERVER + '/xmipp/som/' + urlparam 'id'
+        model.url =  "#{PROCESS_SERVER}/xmipp/som/#{urlparam 'id'}"
         console.log 'set query url to:', model.url
 
         result =
-            avgs : ko.observable null #({url:ko.observable(null)} for x in [0...xdim]) for y in [0...ydim]
-            mask : ko.observable null #layer.asAlphaPNG()
+            avgs : ko.observable null
+            mask : ko.observable null
             progress : progress.uiProgressBar
                 percent : ko.observable 0.0
                 rgba    : ko.observable [100,200,100,1]
@@ -70,8 +80,10 @@ require ['base'
                 stripes : false
             xdim : null
             ydim : null
+            tar  : ko.observable null
 
         result.refresh = ->
+            console.log 'loading:',model.url
             $.ajax
                 url: model.url
                 timeout: model.poll_time * 2
@@ -83,6 +95,7 @@ require ['base'
                         result.progress.percent ( data.done / data.total )
                     if data.mask
                         result.mask data.mask
+                    result.tar data.tar
                     if data.avgs
                         if not result.avgs()
                             result.ydim = data.avgs.length
@@ -100,6 +113,7 @@ require ['base'
 
         model.result = result
         model.result.refresh()
+
         return model
 
 
@@ -120,10 +134,12 @@ require ['base'
         update: (img,_url) ->
             url = ko.utils.unwrapObservable _url()
             img.onload = ->
-                _url().last = url
-            img.onerror = ->
-                img.src = undefined
+                _url().loaded = url
             img.src = url
+
+
+
+
 
 
 

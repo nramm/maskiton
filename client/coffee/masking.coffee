@@ -1,6 +1,6 @@
 
 STATIC_SERVER = 'http://node-2'
-PROCESSING_SERVER = 'http://node-2:9050'
+PROCESS_SERVER = 'http://node-2:9050'
 
 equals = (a,b) ->
     for x of a
@@ -28,7 +28,7 @@ urlparam = (name) ->
     parsed[name]
 
 pollStackAverage = (projectid,stackid,callb) ->
-    url  = "#{PROCESSING_SERVER}/projects/#{projectid}/stacks/#{stackid}/average"
+    url  = "#{PROCESS_SERVER}/projects/#{projectid}/stacks/#{stackid}/average"
     poll = ->
         $.ajax
             url: url
@@ -50,7 +50,10 @@ require ['base'
          'colorpicker'
          'brushes'
          'mask'
-         'progress'], (base,color,canvas,ColorPicker,brushes,Layer,progress) ->
+         'progress',
+         'text!../config.json'], (base,color,canvas,ColorPicker,brushes,Layer,progress,config) ->
+
+    {STATIC_SERVER,PROCESS_SERVER} = JSON.parse config
 
     ViewModel = ->
 
@@ -165,9 +168,9 @@ require ['base'
                     success: (data) ->
                         if typeof data == 'string'
                             data = JSON.parse data
-                        console.log 'received status update:',url
+                        console.log 'received status update:',data
                         if data.id
-                            result.urlref  STATIC_SERVER + "/som_classes.html?id=#{data.id}"
+                            result.urlref  "#{STATIC_SERVER}/som_classes.html?id=#{data.id}"
                         if data.done and data.total
                             result.progress.percent ( data.done / data.total )
                         if data.avgs
@@ -195,7 +198,7 @@ require ['base'
                 ydim:   base.observable 2
                 radius: base.observable 1
                 alpha:  base.observable 0.01
-                iters:  base.observable 1000
+                iters:  base.observable 5000
                 maskname: ko.computed ->
                     layer = model.layers.selected()
                     if not layer then return "None"
@@ -203,7 +206,7 @@ require ['base'
                 start : ->
                     layer = model.layers.selected()
                     if layer
-                        layer.save "#{PROCESSING_SERVER}/images", (data) ->
+                        layer.save "#{PROCESS_SERVER}/images", (data) ->
                             if typeof data == 'string'
                                 data = JSON.parse data
                             console.log 'mask saved to server under id:', data.id
@@ -216,7 +219,7 @@ require ['base'
                                 radius : xmipp_som.radius()
                                 alpha : xmipp_som.alpha()
                                 iters : xmipp_som.iters()
-                            $.post "#{PROCESSING_SERVER}/xmipp/som", JSON.stringify(params), (data)->
+                            $.post "#{PROCESS_SERVER}/xmipp/som", JSON.stringify(params), (data)->
                                 if typeof data == 'string'
                                     data = JSON.parse data
                                 console.log 'server job is at:',data.url

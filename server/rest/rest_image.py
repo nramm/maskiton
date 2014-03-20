@@ -42,6 +42,12 @@ def idFromURL(url):
     parts = os.path.basename(url).split('.')
     return parts[0]
 
+def pathAsURL(path):
+    return path.replace(CONFIG['IMAGE_PATH'],os.path.join(CONFIG['STATIC_SERVER'],CONFIG['IMAGE_URL']))
+
+def urlAsPath(url):
+    return url.replace(os.path.join(CONFIG['STATIC_SERVER'],CONFIG['IMAGE_URL']),CONFIG['IMAGE_PATH'])
+
 def hashFile(src):
     hasher = hashlib.md5()
     while True:
@@ -50,7 +56,7 @@ def hashFile(src):
         hasher.update(data)
     return hasher.hexdigest()
 
-def rest_saveImagePath(path):
+def makeStaticPNG(path):
     if not path:
         return None
     _,ext = os.path.splitext(path)
@@ -60,7 +66,13 @@ def rest_saveImagePath(path):
     if not os.path.exists(dstpath):
         with open('/dev/null','wb') as null:
             sp.check_call(['proc2d',path,dstpath],stdout=null,stderr=null)
-    return urlFromId(hashid,ext='.png')
+    return dstpath
+
+def rest_saveImagePath(path):
+    path = makeStaticPNG(path)
+    if not path:
+        return None
+    return pathAsURL(path)
 
 def rest_saveImageDataURL(dataurl,callback):
     mime,data = fromDataURL(dataurl)

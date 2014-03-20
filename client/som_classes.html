@@ -17,9 +17,13 @@
 
         <div class="result" style="overflow: hidden">
             <div style="border: 2px solid black; padding: 2px; margin: 1px;" >
-                <h4 style="padding: 0px; margin: 5px;">XMIPP SOM Classification</h4>
+                <h4 style="padding: 0px; margin: 5px;">XMIPP SOM Classification
+                    <!-- ko if: result.tar -->
+                    <a data-bind="attr: { href: result.tar }" style="margin-left: 5px;">[download]</a>
+                    <!-- /ko -->
+                </h4>
                 <img data-bind="attr: { src: vm.result.mask },
-                               event: { mousedown: vm.toggleZoomMask }"
+                               event: { mousedown: vm.zoom.toggleMask }"
                          style="height: 50px;
                                display: inline-block;
                                  float: left;
@@ -31,8 +35,8 @@
                         <tr data-bind="foreach: $data">
                             <td style="padding: 0px">
                                 <img data-bind="bimg: $data.url,
-                                               event: { mouseover: vm.zoomOn,
-                                                        mousedown: vm.toggleZoom}"
+                                               event: { mouseover: vm.zoom.on,
+                                                        mousedown: vm.zoom.toggleZoom }"
                                          style="width: 50px;
                                                height: 50px;
                                               display: block;"/>
@@ -55,11 +59,12 @@
                               border: solid black 2px;
                              z-index: 5;
                              display: none">
-            <img class="class-average" style="width: 100%; position:absolute;"/>
-            <img class="class-mask"    style="width: 100%;
-                                           position:absolute;
-                                            display: none;
-                                            opacity: 0.5;"/>
+            <img class="average" style="width: 100%;
+                                     position:absolute;"/>
+            <img class="mask"    style="width: 100%;
+                                     position:absolute;
+                                      display: none;
+                                      opacity: 0.5;"/>
         </div>
 
     </body>

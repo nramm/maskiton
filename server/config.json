@@ -2,12 +2,12 @@
 
 {
 
-    "IMAGE_PATH"        : "/www/assets/static/images",
+    "IMAGE_PATH"        : "/export/assets/static/images",
     "IMAGE_URL"         : "static/images",
-    "STACK_PATH"        : "/www/assets/static/stacks",
-    "UPLOAD_PATH"       : "/www/assets/cached/uploads",
-    "CACHE_PATH"        : "/www/assets/cached/processing",
-    "JOB_PATH"          : "/www/assets/cached/jobs",
+    "STACK_PATH"        : "/export/assets/static/stacks",
+    "UPLOAD_PATH"       : "/export/assets/cached/uploads",
+    "CACHE_PATH"        : "/export/assets/cached/processing",
+    "JOB_PATH"          : "/export/assets/cached/jobs",
     "!APPION_SERVER"    : "mysqldb host",
     "!APPION_USER"      : "username",
     "!APPION_PASSWORD"  : "password",

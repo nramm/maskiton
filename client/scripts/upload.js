@@ -12,7 +12,7 @@
       if (dst == null) {
         dst = file.size;
       }
-      _sliceFile = file.webkitSlice || file.mozSlice;
+      _sliceFile = file.slice || file.webkitSlice || file.mozSlice;
       return _sliceFile.call(file, src, dst);
     };
     Uploader = (function() {

@@ -1,6 +1,6 @@
-STATIC_SERVER  = 'http://node-2:80'
-UPLOAD_SERVER  = 'http://node-2:9000'
-PROCESS_SERVER = 'http://node-2:9050'
+STATIC_SERVER  = 'undefined'
+UPLOAD_SERVER  = 'undefined'
+PROCESS_SERVER = 'undefined'
 
 self.path =
     splitext: (path) ->
@@ -16,18 +16,21 @@ public_datasets = [
         imgid: undefined
     p1 =
         name: '30S Ribosomes'
-        hedid: 'c6042e2d01bd945d468953610a9d1775'
-        imgid: 'c12e8941932e72794011d068c024e8bb'
+        hedid: '3b00d22e58e251f655af27da7d26c89c'
+        imgid: '4d2869084c03c0b6550c65bc131ffdb7'
     p2 =
         name: 'Listerin'
-        hedid: 'e2baa1fb79a0a9d02a213ed8a432446a'
-        imgid: 'e453f406f293ee105ee99c42f9fe6343'
+        hedid: 'fc071b114cda6d750fbb9e2a1db28b6e'
+        imgid: '18e83ea7ee49c7060fbe68f9295d09a2'
     p3 =
         name: 'Synthethic Dataset'
         hedid: '8b0846bf8e6ad7e554239a93f68abee6'
         imgid: '5fd0dfe8514d7237a90fe9f60ece6853'
+    p4 =
+        name: 'Immunoglublin M'
+        hedid: '2427ea10e0c8d3956ca0ed00ae4e4bcc'
+        imgid: '25df817587bcfe757c35c9ba1798a0ff'
 ]
-
 
 require ['jquery-1.7.2',
          'knockout-2.0.0',
@@ -35,7 +38,13 @@ require ['jquery-1.7.2',
          'useful',
          'time',
          'upload',
-         'progress'], (_...,useful,time,upload,progress) ->
+         'progress',
+         'text!../config.json'], (_...,useful,time,upload,progress,config) ->
+
+    {PROCESS_SERVER,STATIC_SERVER,UPLOAD_SERVER} = JSON.parse config
+    console.log 'proccesing server:', PROCESS_SERVER
+    console.log 'static server:', STATIC_SERVER
+    console.log 'upload server:', UPLOAD_SERVER
 
     uploadStack = (hedid,imgid,callb) ->
         params = JSON.stringify
