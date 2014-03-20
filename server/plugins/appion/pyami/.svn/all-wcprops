@@ -1,0 +1,269 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/myami/!svn/ver/16995/trunk/pyami
+END
+mpimrcjpg.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/15410/trunk/pyami/mpimrcjpg.py
+END
+affine.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/myami/!svn/ver/8464/trunk/pyami/affine.py
+END
+tifffile.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/myami/!svn/ver/15532/trunk/pyami/tifffile.py
+END
+ellipse.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/myami/!svn/ver/16267/trunk/pyami/ellipse.py
+END
+timedcall.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/myami/!svn/ver/8261/trunk/pyami/timedcall.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/myami/!svn/ver/5530/trunk/pyami/__init__.py
+END
+quietscipy.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/8463/trunk/pyami/quietscipy.py
+END
+numpil.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/myami/!svn/ver/16995/trunk/pyami/numpil.py
+END
+fftengine.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/myami/!svn/ver/8464/trunk/pyami/fftengine.py
+END
+tif2mrc.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/myami/!svn/ver/15533/trunk/pyami/tif2mrc.py
+END
+peakfinder.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/8464/trunk/pyami/peakfinder.py
+END
+mrcdiff.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/myami/!svn/ver/5736/trunk/pyami/mrcdiff.py
+END
+affine2.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/myami/!svn/ver/15681/trunk/pyami/affine2.py
+END
+imagic2mrc.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/myami/!svn/ver/16960/trunk/pyami/imagic2mrc.py
+END
+douglaspeucker.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/myami/!svn/ver/16201/trunk/pyami/douglaspeucker.py
+END
+mem.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/myami/!svn/ver/12216/trunk/pyami/mem.py
+END
+plot.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/myami/!svn/ver/10059/trunk/pyami/plot.py
+END
+mrc.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/myami/!svn/ver/16085/trunk/pyami/mrc.py
+END
+msc.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/myami/!svn/ver/8464/trunk/pyami/msc.py
+END
+spider.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/myami/!svn/ver/14483/trunk/pyami/spider.py
+END
+fftfun.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/myami/!svn/ver/16532/trunk/pyami/fftfun.py
+END
+makecorrections.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/myami/!svn/ver/15944/trunk/pyami/makecorrections.py
+END
+ordereddict.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/myami/!svn/ver/5612/trunk/pyami/ordereddict.py
+END
+ccd.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/myami/!svn/ver/7750/trunk/pyami/ccd.py
+END
+imagic.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/myami/!svn/ver/16151/trunk/pyami/imagic.py
+END
+imagefun.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/myami/!svn/ver/16995/trunk/pyami/imagefun.py
+END
+mrcconvert
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/myami/!svn/ver/10318/trunk/pyami/mrcconvert
+END
+arraystats.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/myami/!svn/ver/14605/trunk/pyami/arraystats.py
+END
+simplempi.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/15410/trunk/pyami/simplempi.py
+END
+spidernew.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/16995/trunk/pyami/spidernew.py
+END
+setup.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/myami/!svn/ver/15935/trunk/pyami/setup.py
+END
+resultcache.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/myami/!svn/ver/15620/trunk/pyami/resultcache.py
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/myami/!svn/ver/5507/trunk/pyami/README
+END
+rotcor.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/myami/!svn/ver/12264/trunk/pyami/rotcor.py
+END
+surfarea.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/myami/!svn/ver/12120/trunk/pyami/surfarea.py
+END
+correlator.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/myami/!svn/ver/14583/trunk/pyami/correlator.py
+END
+mrc2jpg
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/myami/!svn/ver/6118/trunk/pyami/mrc2jpg
+END
+convolver.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/myami/!svn/ver/5852/trunk/pyami/convolver.py
+END
+fileutil.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/myami/!svn/ver/16638/trunk/pyami/fileutil.py
+END
+jpg.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/myami/!svn/ver/6911/trunk/pyami/jpg.py
+END
+weakattr.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/myami/!svn/ver/5689/trunk/pyami/weakattr.py
+END
+mrc2any
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/myami/!svn/ver/14454/trunk/pyami/mrc2any
+END
+any2mrc
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/myami/!svn/ver/8677/trunk/pyami/any2mrc
+END
+version.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/myami/!svn/ver/14536/trunk/pyami/version.py
+END

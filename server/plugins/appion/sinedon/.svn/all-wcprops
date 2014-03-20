@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/myami/!svn/ver/16797/trunk/sinedon
+END
+directq.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/15702/trunk/sinedon/directq.py
+END
+dbupgrade.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/myami/!svn/ver/16797/trunk/sinedon/dbupgrade.py
+END
+newdict.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/15623/trunk/sinedon/newdict.py
+END
+sqlexpr.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/16023/trunk/sinedon/sqlexpr.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/7681/trunk/sinedon/__init__.py
+END
+setup.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/myami/!svn/ver/5627/trunk/sinedon/setup.py
+END
+tcptransport.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/myami/!svn/ver/5627/trunk/sinedon/tcptransport.py
+END
+sqldict.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/16573/trunk/sinedon/sqldict.py
+END
+sqldb.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/myami/!svn/ver/5627/trunk/sinedon/sqldb.py
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/myami/!svn/ver/5705/trunk/sinedon/README
+END
+maketables.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/myami/!svn/ver/14103/trunk/sinedon/maketables.py
+END
+data.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/myami/!svn/ver/16023/trunk/sinedon/data.py
+END
+dbconfig.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/myami/!svn/ver/16637/trunk/sinedon/dbconfig.py
+END
+dbdatakeeper.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/myami/!svn/ver/16023/trunk/sinedon/dbdatakeeper.py
+END
+socketstreamtransport.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/myami/!svn/ver/12254/trunk/sinedon/socketstreamtransport.py
+END
+connections.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/myami/!svn/ver/10268/trunk/sinedon/connections.py
+END

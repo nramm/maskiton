@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/myami/!svn/ver/15518/trunk/pyami/fft
+END
+registry.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/myami/!svn/ver/14574/trunk/pyami/fft/registry.py
+END
+calc_fftw3.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/myami/!svn/ver/14793/trunk/pyami/fft/calc_fftw3.py
+END
+calc_base.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/myami/!svn/ver/14790/trunk/pyami/fft/calc_base.py
+END
+polar.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/myami/!svn/ver/15518/trunk/pyami/fft/polar.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/myami/!svn/ver/14574/trunk/pyami/fft/__init__.py
+END
+calc_fftpack.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/myami/!svn/ver/14574/trunk/pyami/fft/calc_fftpack.py
+END
+main.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/myami/!svn/ver/14592/trunk/pyami/fft/main.py
+END
