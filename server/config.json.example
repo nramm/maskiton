@@ -1,0 +1,10 @@
+{
+
+    "IMAGE_PATH"        : "/export/maskiton-cache/static/images",
+    "IMAGE_URL"         : "static/images",
+    "STACK_PATH"        : "/export/maskiton-cache/static/stacks",
+    "UPLOAD_PATH"       : "/export/maskiton-cache/uploads",
+    "CACHE_PATH"        : "/export/maskiton-cache/processing",
+    "JOB_PATH"          : "/export/maskiton-cache/jobs"
+
+}
