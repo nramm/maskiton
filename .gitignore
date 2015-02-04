@@ -6,5 +6,6 @@ client/coffee/*.js
 .apdisk
 .DS_Store
 ._.DS_Store
-
+deps
+node_modules/
 
