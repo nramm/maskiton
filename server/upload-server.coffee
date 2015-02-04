@@ -1,6 +1,6 @@
 require 'coffee-script'
 express = require 'express'
-mkdirp  = require 'express/node_modules/mkdirp'
+mkdirp  = require 'mkdirp'
 url     = require 'url'
 fs      = require 'fs'
 fs.path = require 'path'
@@ -40,7 +40,7 @@ parseContentRangeHeader = (request) ->
         if match then [start,stop,length] = (parseInt(x) for x in match[1..])
     return [start,stop,length]
 
-app = express.createServer()
+app = express()
 
 app.get '/uploads/:fileid', (request,response) ->
     console.log 'client requested status of file:',request.params.fileid
@@ -64,7 +64,7 @@ app.options '/uploads/:fileid', (request,response) ->
 
 uploads = {}
 printStatus = ->
-    console.log """\033[2J\033[0;0H"""
+    console.log """\x033[2J\x033[0;0H"""
     console.log uploads
 setInterval printStatus, 5000
 
