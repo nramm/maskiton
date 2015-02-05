@@ -1,17 +1,10 @@
-
-
 {
 
-    "IMAGE_PATH"        : "/export/assets/static/images",
+    "IMAGE_PATH"        : "/export/maskiton-cache/static/images",
     "IMAGE_URL"         : "static/images",
-    "STACK_PATH"        : "/export/assets/static/stacks",
-    "UPLOAD_PATH"       : "/export/assets/cached/uploads",
-    "CACHE_PATH"        : "/export/assets/cached/processing",
-    "JOB_PATH"          : "/export/assets/cached/jobs",
-    "!APPION_SERVER"    : "mysqldb host",
-    "!APPION_USER"      : "username",
-    "!APPION_PASSWORD"  : "password",
-    "!APPION_PROJECTID" : 0
+    "STACK_PATH"        : "/export/maskiton-cache/static/stacks",
+    "UPLOAD_PATH"       : "/export/maskiton-cache/uploads",
+    "CACHE_PATH"        : "/export/maskiton-cache/processing",
+    "JOB_PATH"          : "/export/maskiton-cache/jobs"
 
 }
-

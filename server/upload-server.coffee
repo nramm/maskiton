@@ -64,7 +64,7 @@ app.options '/uploads/:fileid', (request,response) ->
 
 uploads = {}
 printStatus = ->
-    console.log """\x033[2J\x033[0;0H"""
+    console.log "\x1B[2J\x1B[0;0H"
     console.log uploads
 setInterval printStatus, 5000
 

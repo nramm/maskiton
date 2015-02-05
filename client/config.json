@@ -1,7 +1,7 @@
 {
 
-    "STATIC_SERVER"    : "http://maskiton.scripps.edu",
-    "UPLOAD_SERVER"    : "http://maskiton.scripps.edu:9001",
-    "PROCESS_SERVER"   : "http://maskiton.scripps.edu:9002"
+    "STATIC_SERVER"    : "http://puck:80",
+    "UPLOAD_SERVER"    : "http://puck:9001",
+    "PROCESS_SERVER"   : "http://puck:9002"
 
 }

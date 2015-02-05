@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+source deps/eman-1.9/eman.bashrc
+source deps/xmipp-2.4/xmipp.bashrc
+
+export PATH=/export/maskiton/default/deps/miniconda/bin:$PATH
+
+cd server
+nohup coffee upload-server.coffee &> upload-server.log &
+nohup python process-server.py &> process-server.log &
+
