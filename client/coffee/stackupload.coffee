@@ -51,9 +51,11 @@ require ['jquery-1.7.2',
             hedid : hedid
             imgid : imgid
         $.post "#{PROCESS_SERVER}/stacks", params, (data) ->
+            console.log "new stack from #{hedid} and #{imgid} created: #{data.stackid}"
             callb data.projectid, data.stackid
 
     maskOnStack = (projectid,stackid) ->
+        console.log "begin masking on", projectid, stackid
         url = "#{STATIC_SERVER}/masking.html?projectid=#{projectid}&stackid=#{stackid}"
         window.location = url
 
@@ -147,7 +149,7 @@ require ['jquery-1.7.2',
         imgid = ViewModel.imgid()
         if hedid and imgid
             enabled: true
-            action: -> uploadStack hedid,imgid,maskOnStack
+            action: -> uploadStack hedid, imgid, maskOnStack
         else
             enabled: false
     ViewModel.uploads = ko.observableArray()

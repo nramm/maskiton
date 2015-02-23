@@ -15,7 +15,7 @@ class AlreadyLocked(OSError):
 
 class FSLock(object):
 
-    def __init__(self,path):
+    def __init__(self, path):
         self.path = path
         self.retry_delay = 0.1
         self.handlers = {}
@@ -71,7 +71,7 @@ class FSLock(object):
     def __exit__(self,et,ev,st):
         self.release()
         if ev:
-            print 'lock released with exception:', ev
+            print 'lock %s released with exception:'%(self.path), ev
 
 def test_lock_single(path):
     import numpy as np

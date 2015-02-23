@@ -62,11 +62,15 @@ app.options '/uploads/:fileid', (request,response) ->
     response.setHeader 'Access-Control-Max-Age', '0'
     response.send null
 
+# keep track of uploads
 uploads = {}
+
+# print the status of the server to the console
 printStatus = ->
     console.log "\x1B[2J\x1B[0;0H"
     console.log uploads
 setInterval printStatus, 5000
+# ---------------------------------------------
 
 app.put '/uploads/:fileid', (request,response) ->
 
