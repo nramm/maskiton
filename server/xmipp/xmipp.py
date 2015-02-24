@@ -70,7 +70,7 @@ def sel_reduce(cache,sel,level):
     cli(['xmipp_scale_pyramid','-i',osel,'-oroot',spis,'-reduce'])
     return cache(spis2sel,spis)
 
-def hed2sel_pyramid(cache,hed,img,levels=1,splitsize=200):
+def hed2sel_pyramid(cache,hed,img,levels=1,splitsize=100):
     print 'splitting stack into subsets'
     print '   hed:',hed
     print '   img:',img
