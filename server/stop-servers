@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-cd server
-
 CWD=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 sudo nginx -s stop

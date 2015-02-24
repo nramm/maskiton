@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-cd server
-
 CWD=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
 
 # start ningx using local config file
 sudo nginx -c $CWD/nginx.conf
