@@ -55,6 +55,7 @@ define ['base'], (base) ->
             target = brush.target()
             canvas = brush.canvas()
             if canvas and target
+                console.log "started painting to canvas"
                 brush.context.save()
                 brush.ox = $(target).offset().left
                 brush.oy = $(target).offset().top
@@ -113,7 +114,8 @@ define ['base'], (base) ->
     Paint = (template) ->
         
         brush = Brush(template)
-        
+        brush.compositor 'source-over'
+
         brush.blur_color = base.dependent
             read : -> brush.stroke_color()
             write : (v) -> brush.stroke_color v
