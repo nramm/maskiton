@@ -2,7 +2,7 @@
 
 CWD=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-sudo nginx -s stop
+#sudo nginx -s stop
 killall node
 killall python
 killall proc2d # proc2d doesn't exit sometimes

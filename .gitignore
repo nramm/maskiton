@@ -11,3 +11,4 @@ node_modules/
 */config.json
 *.log
 cache/*
+server/config.json

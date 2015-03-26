@@ -2,14 +2,14 @@
 
 CWD=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-# start ningx using local config file
-sudo nginx -c $CWD/nginx.conf
+cd ${CWD}
 
 # start upload server
 nohup coffee upload-server.coffee &> upload-server.log &
 
 # start processing server
-source activate maskiton
-source ../deps/deps.bashrc
+source /nis/sw/init.bashrc
+nis-enable eman
+nis-enable xmipp2
 nohup python process-server.py &> process-server.log &
 

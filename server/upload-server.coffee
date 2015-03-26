@@ -19,7 +19,7 @@ cachePath = (id) ->
     return fs.path.join CONFIG.UPLOAD_PATH, id
 
 ensureCache = (call) ->
-    mkdirp CONFIG.UPLOAD_PATH, 777, (error) ->
+    mkdirp CONFIG.UPLOAD_PATH, '0755', (error) ->
         call error, CONFIG.UPLOAD_PATH
 
 fileSize = (path,call) ->
@@ -45,7 +45,7 @@ app = express()
 app.get '/uploads/:fileid', (request,response) ->
     console.log 'client requested status of file:',request.params.fileid
     path = cachePath request.params.fileid
-    fileSize path, (error,size) ->
+    fileSize path, (error, size) ->
         console.log 'status for file:',path
         response.statusCode = 200
         response.setHeader 'Access-Control-Allow-Origin', '*'
@@ -100,7 +100,7 @@ app.put '/uploads/:fileid', (request,response) ->
         console.log path
         response.end()
 
-    ensureCache (error,cache) ->
+    ensureCache (error, cache) ->
 
         if error then throw error
 
