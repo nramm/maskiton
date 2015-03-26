@@ -19,7 +19,7 @@ def touch(path):
         os.utime(path,None)
 
 def mkdir(path):
-    try: os.makedirs(path)
+    try: os.makedirs(path, 0755)
     except OSError, e:
         if e.errno != errno.EEXIST:
             raise
