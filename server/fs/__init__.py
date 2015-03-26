@@ -1,5 +1,5 @@
 
-from fsops import remove, touch, open
+from fsops import remove, touch, open, common
 from fslock import FSLock
 from fsjail import FSJail
 from fsdict import FSDict

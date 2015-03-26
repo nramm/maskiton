@@ -4,7 +4,7 @@ import subprocess as sp
 
 import numpy as np
 
-from fs import cache, follow, stat
+from fs import cache, follow, stat, common
 
 def permute(cache,count):
     permuted = np.random.permutation(count)
@@ -29,13 +29,22 @@ def hed_dims(cache,hedpath,imgpath):
     raise ValueError('could not determine dimensions for imagic stack: %s'%hedpath)
 
 stdnull = open('/dev/null','w')
-def cli(args,stdout=stdnull,stderr=stdnull):
+def cli(args, stdout=stdnull, stderr=stdnull, **kwargs):
     try:
-        return sp.check_call(args,stdout=stdout,stderr=stderr)
+        return sp.check_call(args, stdout=stdout, stderr=stderr, **kwargs)
     except sp.CalledProcessError, e:
         print 'ERROR in cli:'
         print '  ',' '.join(args)
         raise
+
+def proc2d(src, dst, fmt='', keep=None):
+    if keep:
+        cwd, (src, dst, keep) = common(src, dst, keep)
+        print 'calling proc2d with:', cwd, src, dst, keep
+        return cli(['proc2d', src, dst, fmt, 'list=%s'%(keep)], cwd=cwd)
+    cwd, (src, dst) = common(src, dst)
+    return cli(['proc2d', src, dst, fmt], cwd=cwd)
+
 
 def cli_r(args,stderr=stdnull):
     return sp.check_output(args,stderr=stderr)
@@ -48,13 +57,14 @@ def hed2spis(cache,hed,img,nums=None):
     hed  = cache.fs.ln(hed,'stack.hed')
     img  = cache.fs.ln(img,'stack.img')
     spis = cache.fs.mkdir('stack')
-    args = ['proc2d',hed,spis,'spider-single']
+    args = ['proc2d', hed, spis, 'spider-single']
     if nums:
         keep = cache.fs.pathto('keep.txt')
         with cache.fs.open(keep,'wb') as keepf:
             np.savetxt(keepf,np.sort(nums),fmt='%d')
-        args += ['list=%s'%keep]
-    cli(args)
+        proc2d(hed, spis, fmt='spider-single', keep=keep)
+    else:
+        proc2d(hed, spis, fmt='spider-single')
     return spis
 
 def spis2sel(cache,spis):

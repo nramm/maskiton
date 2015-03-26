@@ -58,6 +58,18 @@ def remap(e):
 
 # todo: add more exceptions for other OSErrors, like permissions, etc.
 
+def exists(path):
+    try:
+        return os.path.exists(path)
+    except OSError as e:
+        raise remap(e)
+
+def common(*paths):
+    prefix = os.path.commonprefix(paths)
+    if exists(prefix):
+        return prefix, [path[len(prefix):] for path in paths]
+    return '', paths
+
 @contextmanager
 def open(path,mode,stats=0755):
     os.umask(0000)

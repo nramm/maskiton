@@ -8,8 +8,5 @@ cd ${CWD}
 nohup coffee upload-server.coffee &> upload-server.log &
 
 # start processing server
-source /nis/sw/init.bashrc
-nis-enable eman
-nis-enable xmipp2
 nohup python process-server.py &> process-server.log &
 
