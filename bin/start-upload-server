@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+MASKITON=/home/maskiton/latest/server
+
+cd ${MASKITON}
+
+coffee upload-server.coffee
+

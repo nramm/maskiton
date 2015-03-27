@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+MASKITON=/home/maskiton/latest/server
+
+export PATH=/home/maskiton/miniconda/bin:${PATH}
+
+source /home/maskiton/xmipp-2.4.bashrc
+source /home/maskiton/eman-1.9.bashrc
+
+cd ${MASKITON}
+
+python process-server.py
+
+
