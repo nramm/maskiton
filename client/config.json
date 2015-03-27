@@ -1,7 +1,0 @@
-{
-
-    "STATIC_SERVER"    : "http://localhost:80",
-    "UPLOAD_SERVER"    : "http://localhost:9001",
-    "PROCESS_SERVER"   : "http://localhost:9002"
-
-}
